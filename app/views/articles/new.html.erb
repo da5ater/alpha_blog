@@ -1,0 +1,15 @@
+<div class="animate-fade-in mx-auto" style="max-width: 700px;">
+  <!-- Back navigation -->
+  <div class="mb-4">
+    <%= link_to articles_path, class: "text-decoration-none text-muted fw-medium d-inline-flex align-items-center gap-1 hover-lift" do %>
+      <i class="bi bi-arrow-left"></i> Back to Articles
+    <% end %>
+  </div>
+
+  <div class="text-center mb-4">
+    <h1 class="fw-bold"><span class="text-gradient">Create</span> a New Article</h1>
+    <p class="text-muted">Draft a new post to publish on the AlphaBlog directory.</p>
+  </div>
+
+  <%= render "layouts/form" %>
+</div>

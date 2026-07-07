@@ -1,0 +1,96 @@
+<div class="animate-fade-in">
+  <!-- Hero Section -->
+  <div class="p-5 mb-5 rounded-4 bg-body-secondary position-relative overflow-hidden shadow-sm">
+    <div class="row align-items-center py-4">
+      <div class="col-lg-8">
+        <h1 class="display-3 fw-bold mb-3">
+          Share your stories, <span class="text-gradient">connect</span> with the world.
+        </h1>
+        <p class="col-md-10 fs-4 text-muted mb-4">
+          AlphaBlog is a minimal, elegant publishing platform designed to share your ideas, learn, and grow as a developer.
+        </p>
+        <div class="d-flex flex-wrap gap-3">
+          <%= link_to articles_path, class: "btn btn-primary btn-lg px-4 py-3 rounded-pill fw-semibold shadow-sm d-flex align-items-center gap-2" do %>
+            <i class="bi bi-compass"></i> Explore Articles
+          <% end %>
+          <%= link_to new_article_path, class: "btn btn-outline-secondary btn-lg px-4 py-3 rounded-pill fw-semibold hover-lift" do %>
+            <i class="bi bi-pencil-square me-2"></i> Write an Article
+          <% end %>
+        </div>
+      </div>
+      <div class="col-lg-4 d-none d-lg-block text-center">
+        <i class="bi bi-journal-richtext text-primary-emphasis" style="font-size: 10rem;"></i>
+      </div>
+    </div>
+  </div>
+
+  <!-- Recent Articles -->
+  <div class="row mb-4">
+    <div class="col-12 d-flex justify-content-between align-items-center mb-4">
+      <h2 class="h3 fw-bold mb-0">Recent Publications</h2>
+      <%= link_to "View all articles →", articles_path, class: "text-decoration-none fw-medium" %>
+    </div>
+  </div>
+
+  <% if @articles.any? %>
+    <div class="row g-4">
+      <% @articles.each do |article| %>
+        <div class="col-md-6 col-lg-4">
+          <div class="card card-custom h-100 d-flex flex-column justify-content-between">
+            <div class="card-body">
+              <div class="d-flex align-items-center mb-3">
+                  <% if article.user %> <%= link_to user_path(article.user), class: "me-2
+  hover-lift d-inline-block" do %> <%= pravatar_for(article.user, size: 40) %>
+  <% end %> <% else %>
+  <div
+    class="avatar-badge me-2"
+    style="width: 40px; height: 40px; font-size: 0.9rem;"
+  >
+    AB
+  </div>
+  <% end %>
+  <div>
+    <h6 class="mb-0 fw-bold">
+      <% if article.user %> <%= link_to article.user.username,
+      user_path(article.user), class: "text-decoration-none text-body" %> <%
+      else %> Anonymous <% end %>
+    </h6>
+    <small class="text-muted"
+      ><%= time_ago_in_words(article.created_at) %> ago</small
+    >
+  </div>
+              </div>
+              <h5 class="card-title fw-bold mb-2">
+                <%= link_to article.title, article_path(article), class: "text-decoration-none text-body" %>
+              </h5>
+              <p class="card-text text-muted mb-4">
+                <%= truncate(article.description, length: 120) %>
+              </p>
+            </div>
+            <div class="card-footer bg-transparent border-top-0 pt-0 pb-3 px-3 d-flex justify-content-between align-items-center">
+              <%= link_to "Read Article", article_path(article), class: "btn btn-sm btn-outline-primary rounded-pill px-3" %>
+              <div class="d-flex gap-1">
+                <%= link_to edit_article_path(article), class: "btn btn-sm btn-link text-secondary p-1", title: "Edit" do %>
+                  <i class="bi bi-pencil-fill"></i>
+                <% end %>
+                <%= button_to article_path(article), method: :delete, data: { turbo_confirm: "Are you sure you want to delete this article?" }, class: "btn btn-sm btn-link text-danger p-1", title: "Delete" do %>
+                  <i class="bi bi-trash-fill"></i>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <!-- Empty State -->
+    <div class="text-center py-5 border rounded-4 bg-body-tertiary">
+      <i class="bi bi-journal-code text-muted mb-3" style="font-size: 4rem;"></i>
+      <h3 class="fw-bold">No articles yet</h3>
+      <p class="text-muted col-md-6 mx-auto mb-4">Be the first to share your thoughts by creating a new article today.</p>
+      <%= link_to new_article_path, class: "btn btn-primary px-4 py-2 rounded-pill fw-semibold" do %>
+        <i class="bi bi-plus-lg"></i> Create First Article
+      <% end %>
+    </div>
+  <% end %>
+</div>

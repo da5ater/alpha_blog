@@ -1,0 +1,42 @@
+<div class="animate-fade-in mx-auto" style="max-width: 900px;">
+  <!-- Profile Summary Header Card -->
+  <div class="card card-custom p-4 p-md-5 mb-5 shadow-sm text-center border-0 bg-body">
+    <div class="d-flex flex-column align-items-center">
+      <!-- Profile Gravatar -->
+      <div class="mb-4 position-relative">
+        <%= pravatar_for @user, size: 150 %>
+      </div>
+      
+      <!-- Username Title -->
+      <h1 class="display-5 fw-bold mb-2"><%= @user.username %>'s Profile</h1>
+      <p class="text-muted mb-4"><i class="bi bi-envelope-fill me-2"></i><%= @user.email %></p>
+      <% if logged_in? && (current_user == @user || current_user.admin?) %>
+      <!-- Action: Edit Profile -->
+      <div class="d-flex gap-3 justify-content-center">
+        <%= link_to edit_user_path(@user), class: "btn btn-outline-primary px-4 py-2 rounded-pill fw-semibold hover-lift" do %>
+          <i class="bi bi-pencil-square me-1"></i> Edit Profile
+        <% end %>
+      </div>
+        <% end %>
+    </div>
+  </div>
+
+  <!-- User's Articles Section -->
+  <div class="border-top pt-5 mt-5">
+    <div class="text-center mb-5">
+      <h2 class="fw-bold mb-2">Articles by <%= @user.username %></h2>
+      <p class="text-muted"><%= pluralize(@articles.present? ? @articles.count : 0, "article") %> published</p>
+    </div>
+
+    <% if @articles.present? && @articles.any? %>
+      <%= render "articles/article" %>
+    <% else %>
+      <!-- Empty State -->
+      <div class="text-center py-5 border rounded-4 bg-body-tertiary">
+        <i class="bi bi-journal-x text-muted mb-3" style="font-size: 3.5rem;"></i>
+        <h4 class="fw-bold">No articles found</h4>
+        <p class="text-muted mb-0">This user hasn't written any articles yet.</p>
+      </div>
+    <% end %>
+  </div>
+</div>

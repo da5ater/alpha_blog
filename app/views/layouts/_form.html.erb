@@ -1,0 +1,52 @@
+<div class="card card-custom p-4 p-md-5 shadow-sm border-0 max-width-container mx-auto" style="max-width: 700px;">
+  <%= render "shared/errors", obj: @article %>
+
+  <%= form_with model: @article, local: true do |f| %>
+    <!-- Title Field -->
+    <div class="form-group mb-4">
+      <%= f.label :title, class: "form-label fw-semibold" %>
+      <%= f.text_field :title, 
+                       class: "form-control #{'is-invalid' if @article.errors[:title].any?}", 
+                       placeholder: "Enter a catchy title for your article" %>
+      <% if @article.errors[:title].any? %>
+        <div class="invalid-feedback">
+          <%= @article.errors[:title].join(", ") %>
+        </div>
+      <% end %>
+      <div class="form-text text-muted">Title must be between 3 and 50 characters long.</div>
+    </div>
+    
+    <!-- Description Field -->
+    <div class="form-group mb-4">
+      <%= f.label :description, class: "form-label fw-semibold" %>
+      <%= f.text_area :description, 
+                      class: "form-control #{'is-invalid' if @article.errors[:description].any?}", 
+                      rows: 8, 
+                      placeholder: "Write your article description here..." %>
+      <% if @article.errors[:description].any? %>
+        <div class="invalid-feedback">
+          <%= @article.errors[:description].join(", ") %>
+        </div>
+      <% end %>
+      <div class="form-text text-muted">Description must be between 10 and 300 characters long.</div>
+    </div>
+
+    <!-- Category Field -->
+    <div class="form-group mb-4">
+      <%= f.label :category, "Categories", class: "form-label fw-semibold" %>
+      <%= f.collection_select :category_ids, Category.all, :id, :name,
+                              {},
+                              { multiple: true, size: 3, class: "form-select shadow-sm rounded #{'is-invalid' if @article.errors[:categories].any?}" } %>
+      <div class="form-text text-muted">Hold Command (Mac) or Ctrl (Windows/Linux) to select multiple categories.</div>
+    </div>
+    
+    <!-- Submission controls -->
+    <div class="d-flex align-items-center justify-content-between gap-3 border-top pt-4 mt-2">
+      <%= link_to @article.new_record? ? articles_path : article_path(@article), class: "btn btn-outline-secondary px-4 py-2 rounded-pill fw-semibold hover-lift" do %>
+        Cancel
+      <% end %>
+
+      <%= f.submit class: "btn btn-primary px-4 py-2 rounded-pill fw-semibold shadow-sm" %>
+    </div>
+  <% end %>
+</div>

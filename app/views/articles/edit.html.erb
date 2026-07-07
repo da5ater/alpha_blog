@@ -1,0 +1,15 @@
+<div class="animate-fade-in mx-auto" style="max-width: 700px;">
+  <!-- Back navigation -->
+  <div class="mb-4">
+    <%= link_to article_path(@article), class: "text-decoration-none text-muted fw-medium d-inline-flex align-items-center gap-1 hover-lift" do %>
+      <i class="bi bi-arrow-left"></i> Back to Article
+    <% end %>
+  </div>
+
+  <div class="text-center mb-4">
+    <h1 class="fw-bold"><span class="text-gradient">Edit</span> Article</h1>
+    <p class="text-muted">Modify the details of your article below.</p>
+  </div>
+
+  <%= render "layouts/form" %>
+</div>

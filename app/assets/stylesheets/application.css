@@ -1,0 +1,145 @@
+/*
+ * Alpha Blog Custom Stylesheet
+ * Integrates with Bootstrap 5.3 theme variables.
+ */
+
+:root {
+  --font-family-base: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --gradient-primary: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+  --gradient-primary-hover: linear-gradient(135deg, #4338ca 0%, #6d28d9 100%);
+  --shadow-card: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  --shadow-card-hover: 0 12px 20px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+body {
+  font-family: var(--font-family-base);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Text Gradient Styling */
+.text-gradient {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Glassmorphic/Custom Navbar */
+.navbar-custom {
+  background-color: rgba(var(--bs-body-bg-rgb), 0.8) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+[data-bs-theme="dark"] .navbar-custom {
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+[data-bs-theme="light"] .navbar-custom {
+  border-color: rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Custom Theme Toggle Button */
+.btn-theme-toggle {
+  background-color: var(--bs-tertiary-bg);
+  width: 42px;
+  height: 42px;
+  transition: var(--transition-smooth);
+}
+
+.btn-theme-toggle:hover {
+  background-color: var(--bs-secondary-bg);
+  transform: rotate(15deg);
+}
+
+/* Premium Buttons */
+.btn-primary {
+  background: var(--gradient-primary);
+  border: none;
+  transition: var(--transition-smooth);
+}
+
+.btn-primary:hover, 
+.btn-primary:focus, 
+.btn-primary:active {
+  background: var(--gradient-primary-hover) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3) !important;
+}
+
+/* Rounded Cards with Transitions */
+.card-custom {
+  border-radius: 16px;
+  border: 1px solid rgba(var(--bs-body-color-rgb), 0.08);
+  background-color: var(--bs-card-bg);
+  box-shadow: var(--shadow-card);
+  transition: var(--transition-smooth);
+  overflow: hidden;
+}
+
+.card-custom:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-card-hover);
+  border-color: rgba(var(--bs-primary-rgb), 0.3);
+}
+
+/* Interactive elements */
+.hover-lift {
+  transition: var(--transition-smooth);
+}
+.hover-lift:hover {
+  transform: translateY(-3px);
+}
+
+/* Form Styles */
+.form-control, .form-select {
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+  border: 1px solid rgba(var(--bs-body-color-rgb), 0.15);
+  background-color: var(--bs-body-bg);
+  transition: var(--transition-smooth);
+}
+
+.form-control:focus {
+  border-color: #818cf8;
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15);
+}
+
+.form-group label {
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: var(--bs-body-color);
+  font-size: 0.95rem;
+}
+
+/* Initials Avatar Badge */
+.avatar-badge {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--gradient-primary);
+  color: #fff;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Footer override */
+footer.footer {
+  background-color: var(--bs-body-bg);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s ease-out forwards;
+}

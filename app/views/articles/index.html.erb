@@ -1,0 +1,35 @@
+<div class="animate-fade-in">
+  <!-- Index Header -->
+  <div class="d-flex flex-column flex-sm-row justify-content-between align-items-sm-center gap-3 mb-5 border-bottom pb-4">
+    <div>
+      <h1 class="fw-bold mb-1">Articles Directory</h1>
+      <p class="text-muted mb-0">
+        Showing <%= pluralize(@articles.count, "article") %> published on AlphaBlog.
+      </p>
+    </div>
+    <div>
+      <%= link_to new_article_path, class: "btn btn-primary px-4 py-2 rounded-pill fw-semibold shadow-sm d-flex align-items-center gap-2" do %>
+        <i class="bi bi-pencil-square"></i> Create New Article
+      <% end %>
+    </div>
+  </div>
+
+
+  <% if @articles.any? %>
+    <div class="d-flex justify-content-center my-4">
+      <%== @pagy.series_nav(:bootstrap) %>
+    </div>
+    <!-- Render the article collection partial -->
+    <%= render "article" %>
+  <% else %>
+    <!-- Empty State -->
+    <div class="text-center py-5 border rounded-4 bg-body-tertiary">
+      <i class="bi bi-journal-x text-muted mb-3" style="font-size: 4rem;"></i>
+      <h3 class="fw-bold">No articles found</h3>
+      <p class="text-muted col-md-6 mx-auto mb-4">Start posting articles to see them in this list.</p>
+      <%= link_to new_article_path, class: "btn btn-primary px-4 py-2 rounded-pill fw-semibold" do %>
+        <i class="bi bi-plus-lg"></i> Create First Article
+      <% end %>
+    </div>
+  <% end %>
+</div>

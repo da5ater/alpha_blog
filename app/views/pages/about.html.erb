@@ -1,0 +1,83 @@
+<div class="animate-fade-in max-width-container mx-auto" style="max-width: 800px;">
+    <!-- Header -->
+  <div class="text-center mb-5">
+    <h1 class="display-4 fw-bold mb-3">About <span class="text-gradient">AlphaBlog</span></h1>
+    <p class="fs-5 text-muted">A modern blogging platform built to learn the fundamentals of Ruby on Rails.</p>
+  </div>
+
+  <!-- Tech Stack Grid -->
+  <div class="card card-custom p-4 p-md-5 mb-5 shadow-sm">
+    <div class="row g-4 align-items-center">
+      <div class="col-md-7">
+        <h3 class="fw-bold mb-3">The Project Goal</h3>
+        <p class="text-muted">
+          AlphaBlog is a full-stack web application designed to demonstrate the power and simplicity of the **Ruby on Rails** framework. 
+          It implements a complete Model-View-Controller (MVC) architecture, with full CRUD functionality for blog posts (articles), user associations, database migrations, and validation logic.
+        </p>
+        <p class="text-muted mb-4">
+          This frontend upgrade introduces a responsive, modern design powered by **Bootstrap 5.3**, complete with responsive cards, sleek forms, and a client-side light/dark theme persistency system.
+        </p>
+        <%= link_to articles_path, class: "btn btn-primary px-4 py-2 rounded-pill fw-semibold shadow-sm" do %>
+          Browse Articles
+        <% end %>
+      </div>
+      <div class="col-md-5">
+        <div class="p-3 bg-body-secondary rounded-4">
+          <h5 class="fw-bold mb-3"><i class="bi bi-cpu-fill text-primary me-2"></i> Tech Stack</h5>
+          <ul class="list-unstyled mb-0">
+            <li class="mb-2 d-flex align-items-center">
+              <i class="bi bi-gem text-danger me-2 fs-5"></i>
+              <span><strong>Ruby:</strong> 3.3+</span>
+            </li>
+            <li class="mb-2 d-flex align-items-center">
+              <i class="bi bi-box-seam-fill text-danger me-2 fs-5"></i>
+              <span><strong>Rails:</strong> 8.1.x</span>
+            </li>
+            <li class="mb-2 d-flex align-items-center">
+              <i class="bi bi-database-fill-check text-info me-2 fs-5"></i>
+              <span><strong>Database:</strong> SQLite3</span>
+            </li>
+            <li class="mb-2 d-flex align-items-center">
+              <i class="bi bi-bootstrap-fill text-purple me-2 fs-5" style="color: #7952b3;"></i>
+              <span><strong>CSS:</strong> Bootstrap 5.3</span>
+            </li>
+            <li class="d-flex align-items-center">
+              <i class="bi bi-lightning-charge-fill text-warning me-2 fs-5"></i>
+              <span><strong>Speed:</strong> Hotwire & Turbo</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Features card -->
+  <div class="row g-4 mb-4">
+    <div class="col-md-6">
+      <div class="card card-custom h-100 p-4">
+        <div class="d-flex align-items-center mb-3">
+          <div class="btn btn-sm btn-outline-primary rounded-3 me-3 p-2">
+            <i class="bi bi-shield-lock-fill fs-4"></i>
+          </div>
+          <h4 class="fw-bold mb-0">Robust Backend</h4>
+        </div>
+        <p class="text-muted mb-0">
+          Built-in Active Record associations allow articles to belong to users, with complete server-side data validations for presence, unique formats, and lengths.
+        </p>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card card-custom h-100 p-4">
+        <div class="d-flex align-items-center mb-3">
+          <div class="btn btn-sm btn-outline-primary rounded-3 me-3 p-2">
+            <i class="bi bi-palette-fill fs-4"></i>
+          </div>
+          <h4 class="fw-bold mb-0">Interactive Design</h4>
+        </div>
+        <p class="text-muted mb-0">
+          Features high-performance components, sleek hover scales, animated floating dismissible alerts, and dark mode toggles out of the box.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
